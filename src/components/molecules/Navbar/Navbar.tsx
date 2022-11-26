@@ -1,22 +1,36 @@
 import { Link, ThemeButton } from 'components/atoms'
 
+const LINK_CLASSES = 'mx-4'
+
+const links: Array<Record<string, string>> = [
+  {
+    name: 'Home',
+    url: '/'
+  },
+  {
+    name: 'Uses',
+    url: '/uses'
+  },
+  {
+    name: 'Projects',
+    url: '/projects'
+  },
+  {
+    name: 'Portfolio',
+    url: '/portfolio'
+  }
+]
+
 const Navbar = () => (
-  <div className='flex justify-between w-full'>
-    <ul className='inline-flex'>
-      <li>
-        <Link href='#'>A</Link>
-      </li>
-      <li>
-        <Link href='#'>A</Link>
-      </li>
-      <li>
-        <Link href='#'>A</Link>
-      </li>
-      <li>
-        <Link href='#'>A</Link>
-      </li>
+  <div className='flex items-center justify-between w-full my-8'>
+    <ul className='inline-flex invisible lg:visible'>
+      {links.map((link: any, index: number) => (
+        <li className={LINK_CLASSES} key={index}>
+          <Link href={link.url}>{link.name}</Link>
+        </li>
+      ))}
     </ul>
-    <ThemeButton onClick={() => console.log('test')} />
+    <ThemeButton />
   </div>
 )
 
