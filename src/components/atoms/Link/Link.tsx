@@ -1,5 +1,6 @@
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
+import cn from 'classnames'
 
 interface LinkProps {
   href: string
@@ -8,14 +9,17 @@ interface LinkProps {
 }
 
 const Link = ({ href, title, target }: LinkProps): JSX.Element => {
-  const router = useRouter()
-  const isActive = router.pathname === href
+  const { pathname } = useRouter()
+  const isActive = pathname === href
 
   return (
     <NextLink
       href={href}
       target={target}
-      className={isActive ? 'text-accent' : 'text-accent-1'}
+      className={cn(
+        'hover:text-accent',
+        isActive ? 'text-accent' : 'text-accent-1'
+      )}
     >
       {title}
     </NextLink>
