@@ -26,7 +26,7 @@ const Navbar = () => (
     <ul className='inline-flex invisible lg:visible'>
       {links.map((link: any, index: number) => (
         <li className={LINK_CLASSES} key={index}>
-          <Link href={link.url}>{link.name}</Link>
+          <Link href={link.url} title={link.name} />
         </li>
       ))}
     </ul>
