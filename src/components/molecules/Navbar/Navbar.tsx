@@ -1,6 +1,6 @@
 import { Link, ThemeButton } from 'components/atoms'
 
-const LINK_CLASSES = 'mx-4'
+const LINK_CLASSES = 'mr-8'
 
 const links: Array<Record<string, string>> = [
   {
@@ -22,7 +22,7 @@ const links: Array<Record<string, string>> = [
 ]
 
 const Navbar = () => (
-  <div className='flex items-center justify-between w-full my-8'>
+  <div className='flex items-center justify-between w-full my-8 mb-20'>
     <ul className='inline-flex invisible lg:visible'>
       {links.map((link: any, index: number) => (
         <li className={LINK_CLASSES} key={index}>
