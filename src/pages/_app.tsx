@@ -6,7 +6,7 @@ import { Navbar } from 'components/molecules'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider>
+    <ThemeProvider disableTransitionOnChange>
       <Head />
       <Navbar />
       <Container>
