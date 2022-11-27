@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Container, Link, ThemeButton } from 'components/atoms'
 
 const LINK_CLASSES = 'mr-8'
@@ -21,22 +22,34 @@ const links: Array<Record<string, string>> = [
   }
 ]
 
-const Navbar = () => (
-  <div className='fixed w-full navbar'>
-    <div className='flex justify-center w-full'>
-      <Container>
-        <div className='flex items-center justify-between w-full my-8 mb-20'>
-          <ul className='inline-flex invisible lg:visible'>
-            {links.map((link: any, index: number) => (
-              <li className={LINK_CLASSES} key={index}>
-                <Link href={link.url} title={link.name} />
-              </li>
-            ))}
-          </ul>
+const Navbar = () => {
+  const [clock, setClock] = useState<Date>(new Date())
+  const [isMounted, setIsMounted] = useState<boolean>(true)
+
+  useEffect(() => {
+    setIsMounted(false)
+  }, [])
+
+  useEffect(() => {
+    const timeId = setInterval(() => {
+      setClock(new Date())
+    }, 1000)
+    return () => clearInterval(timeId)
+  }, [clock])
+
+  return (
+    !isMounted && (
+      <div className='fixed w-full navbar'>
+        <div className='flex justify-center w-full'>
+          <Container>
+            <div className='flex items-center justify-between w-full my-8 mb-20'>
+              {clock.toLocaleTimeString().slice(0, 8)}
+            </div>
+          </Container>
         </div>
-      </Container>
-    </div>
-  </div>
-)
+      </div>
+    )
+  )
+}
 
 export default Navbar
