@@ -1,10 +1,10 @@
 import { NextPage } from 'next'
-import { Hero, Navbar } from 'components/molecules'
+import { Hero, Navbar, Projects } from 'components/molecules'
 
 const Home: NextPage = () => (
   <main>
-    <Navbar />
     <Hero />
+    <Projects />
   </main>
 )
 

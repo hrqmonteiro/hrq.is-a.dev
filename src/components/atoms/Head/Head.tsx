@@ -1,7 +1,7 @@
 import NextHead from 'next/head'
 
 interface HeadProps {
-  title: string
+  title?: string
 }
 
 const Head = ({ title }: HeadProps) => (
